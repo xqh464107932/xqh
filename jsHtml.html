@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        .classtest{
+            width: 100px;
+            height: 200px;
+            background-color: #0066CC;
+        }
+
+        .classtest2{
+            width: 300px;
+            height: 200px;
+            background-color: #232323;
+        }
+        .classtest3{
+            width: 500px;;
+            height: 300px;
+            background-color: #36b52a;
+
+        }
+    </style>
+
+</head>
+<body>
+    <script type="text/javascript">
+
+        function insertpic(){
+            path="img/2.gif";//请修改为本地图片的路径
+            document.getElementById('test1').innerHTML='<img src="'+path+'" />';
+        }
+
+
+        function change(){
+            var elem = document.getElementById("test1");
+
+            elem.style.setProperty('width','250px');
+            elem.className = "classtest3";
+//
+//            elem.innerHTML = "<input type='button' value='2222'>";
+//            document.write("<html></html>");
+
+            loadXMLDoc();
+
+        }
+
+        var xmlhttp;
+        var url = "http://localhost/ajax_test.php";
+        function loadXMLDoc()
+        {
+            xmlhttp=null;
+            if (window.XMLHttpRequest)
+            {// code for Firefox, Opera, IE7, etc.
+                xmlhttp=new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject)
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if (xmlhttp!=null)
+            {
+                xmlhttp.onreadystatechange=state_Change;
+                xmlhttp.open("GET",url,true);
+                xmlhttp.send(null);
+            }
+            else
+            {
+                alert("Your browser does not support XMLHTTP.");
+            }
+        }
+
+        function state_Change()
+        {
+            if (xmlhttp.readyState==4)
+            {// 4 = "loaded"
+                if (xmlhttp.status==200)
+                {// 200 = "OK"
+//                    var str = xmlhttp.responseText;
+//                    var data = JSON.parse(str);
+//                    alert(data);
+//                    alert(data[1]["b"]);
+                    document.getElementById('test1').innerHTML=xmlhttp.responseText;
+                }
+                else
+                {
+                    alert("Problem retrieving data:" + xmlhttp.statusText);
+                }
+            }
+        }
+    </script>
+
+    </script>
+    <input type="button" value="sumbit" >
+
+    <div class="classtest" name="" id="test">this is div<div><input type="button" value="change" onclick="change()"></div></div>
+     <br>
+    <div class="" name="" id="test1">测试<div><input type="button" value="dianji" onclick="insertpic()"></div></div>
+</body>
+</html>

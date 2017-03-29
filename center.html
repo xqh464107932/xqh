@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td width="100">用户名</td>
+            <td width="100">密码</td>
+        </tr>
+        <?php while($message = mysql_fetch_array($result)) { ?>
+        <tr>
+
+        <td><?php echo $message['username']; ?></td>
+        <td><?php echo $message['password']; ?></td>
+        </tr>
+        <?php } ?>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td,th{
+            text-align: left;;
+        }
+    </style>
+</head>
+<body>
+<h1>首页</h1>
+<a href="login.php">登陆</a>|<a href="register.php">注册</a>
+
+<br />
+最新发布：
+<table>
+    <tr>
+        <th>作者</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>发布时间</th>
+        <th>操作</th>
+    </tr>
+    <?php while($message= mysql_fetch_array($result)){?>
+    <tr>
+        <td><?php echo $message['user_id']; ?></td>
+        <td><?php echo $message['title']; ?></td>
+        <td><?php echo $message['content']; ?></td>
+        <td><?php echo $message['time']; ?></td>
+        <td><a href="">查看详情</a></td>
+    </tr>
+    <?php }?>
+</table>
+
+
+
+</body>
+</html>
